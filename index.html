@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOAR - Mapping & Routing</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <!-- Leaflet Control Geocoder (required for geocoding) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="top-nav-bar">
+    <div class="nav-links">
+        <a href="#" class="nav-link active">Dashboard</a>
+        <span class="nav-divider">|</span>
+        <a href="#" class="nav-link">Route Planner</a>
+        <span class="nav-divider">|</span>
+        <a href="#" class="nav-link">Fleet</a>
+        <span class="nav-divider">|</span>
+        <a href="#" class="nav-link">Weather</a>
+        <span class="nav-divider">|</span>
+        <a href="#" class="nav-link">Reports</a>
+    </div>
+    <div class="nav-actions">
+        <button class="nav-icon-btn" title="Notifications">🔔</button>
+        <button class="nav-icon-btn" title="Profile">👤 Profile</button>
+    </div>
+</nav>
+
+    <!-- Brand Label / Header Logo -->
+    <div id="top-header">
+        <img src="ZoarPro-logo.png" alt="ZoarPro Logo" class="header-logo">
+        <div class="brand-text">
+            <h1>Z<span class="logo-orange">o</span>arPro</h1>
+            <p style="color: #ff6a00;">Premium Traveler Services</p>
+        </div>
+    </div>
+    
+    <hr class="map-divider">
+
+<!-- Map Container -->
+<div id="map">
+    <!-- Road Companion Widget nested cleanly inside the map container -->
+    <div id="road-companion-card">
+        <h4 style="margin: 0 0 5px 0; color: #ff6a00; font-size: 14px;">ROAD COMPANION</h4>
+        <p id="time-message" style="margin: 0 0 4px 0; font-size: 13px; color: #fff;"></p>
+        <p id="companion-quote" style="margin: 0; font-style: italic; font-size: 14px; color: #ccc;"></p>
+    </div>
+
+    <!-- Route Summary Card nested inside the map -->
+    <div id="routeSummaryCard" class="route-summary-card">
+        <div class="summary-title">ROUTE SUMMARY</div>
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <span class="metric-value" id="summaryMiles">📍 1,257</span>
+                <span class="metric-label">Miles</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value" id="summaryTime">⏱️ 18h 34m</span>
+                <span class="metric-label">HOS / Drive</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value" id="summaryFuel">⛽ 171</span>
+                <span class="metric-label">Gal Fuel</span>
+            </div>
+        </div>
+        <hr class="summary-divider">
+        <button id="navigateBtn" class="navigate-btn">NAVIGATE</button>
+    </div>
+</div>    
+
+    <!-- PLAN YOUR ROUTE Section -->
+    <div class="section-title plan-route-title">PLAN YOUR ROUTE</div>
+        <div class="input-row" id="controls-container">
+            <input type="text" id="startInput" placeholder="Starting location...">
+            <button id="swapBtn" title="Swap Locations">&#8646;</button>
+            <input type="text" id="endInput" placeholder="Destination...">
+            <button id="calcBtn" disabled>Calculate Route</button>
+        </div>
+        
+       <!-- SERVICES Section -->
+       <div class="section-title">SERVICES</div>
+       <div class="service-buttons-row">
+            <button class="service-btn" data-type="fuel">⛽ Fuel</button>
+            <button class="service-btn" data-type="hotel">🏨 Hotel</button>
+            <button class="service-btn" data-type="motel">🛏️ Motel</button>
+            <button class="service-btn" data-type="restroom">🅿️ Rest Stops</button>
+            <button class="service-btn" data-type="eld">🏢 ELD Hub</button>
+        </div>
+        
+    <!-- Safety Updates Notification Banner -->
+    <div class="safety-container">
+        <button class="safety-btn" id="safetyAlertBtn">
+            <span class="safety-title" id="safetyTitle">🔔 Safety Updates</span>
+            <span class="safety-text" id="safetyText">High winds on I-95 near Jacksonville.</span>
+        </button>
+    </div>
+
+<!-- Leaflet JS & Routing Machine -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+<!-- Custom Script -->
+<script src="script.js"></script>
+
+</body>
+</html>
